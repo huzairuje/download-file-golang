@@ -1,0 +1,1 @@
+web: ./bin/coba_download_golang
