@@ -69,7 +69,12 @@ func PdfGen(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/", Index)
 	http.HandleFunc("/pdf", PdfGen)
-	err := http.ListenAndServe(":9000", nil)
+	// port := 3000
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "3000"
+	}
+	err := http.ListenAndServe(":"+port, nil)
 
 	if err != nil {
 		fmt.Println(err)
